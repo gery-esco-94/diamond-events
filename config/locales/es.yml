@@ -1,0 +1,18 @@
+es:
+ nav:
+  root: Inicio
+  edit: Editar Usuario
+  close: Cerrar sesion
+  login: Iniciar sesion
+  signup: Nuevo usuario
+ home:
+  index:
+   title: "Bienvenido!"
+   description: "Bienvenido a nuestra pagina web"
+ activerecord:
+  errors:
+   models:
+    usuario:
+     attributes:
+      password:
+       blank: La contaseña no puede estar vacia

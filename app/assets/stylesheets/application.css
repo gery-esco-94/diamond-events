@@ -1,0 +1,77 @@
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, vendor/assets/stylesheets,
+ * or vendor/assets/stylesheets of plugins, if any, can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the bottom of the
+ * compiled file so the styles you add here take precedence over styles defined in any styles
+ * defined in the other CSS/SCSS files in this directory. It is generally better to create a new
+ * file per style scope.
+ *
+ *= require_tree .
+ *= require_self
+ *= require bootstrap-material-design
+ *= require font-awesome
+ */
+
+.notice,
+.alerta {
+	width: 100%;
+	text-align: center;
+	color: #fff;
+}
+
+.notice {
+	background-color: #01579b;
+}
+
+.alerta {
+	background-color: #ffd600;
+}
+
+.navbar {
+	margin-bottom: 0px !important;
+}
+
+#error_explanation {
+	position: relative;
+	left: 0px;
+	right: 0px;
+}
+
+#error_explanation h2{
+	display: none;
+}
+ #error_explanation ul {
+ 	margin: 0 auto;
+	padding: 0 !important;
+}
+
+#error_explanation ul li {
+	list-style: none;
+	width: 100%;
+	text-align: center;
+	color: #fff;
+	background-color: #ffd600;
+}
+
+.field_with_errors input {
+    border-bottom: 2px solid #f44336;
+}
+.field_with_errors {
+	color: #f44336;
+	display: inline;
+}
+.field_with_errors input {
+	width: 100%
+}
+.field_with_errors input[type=checkbox] {
+	width: 20px;
+	float: left;
+	border-color: red;
+}
+.hidden {
+	display: none;
+}

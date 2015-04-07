@@ -1,0 +1,114 @@
+<script type="text/javascript">
+
+$(document).ready(function(){  
+  $("#checkbox").click(function() {  
+    if($("#checkbox").is(':checked')) {  
+      $("#submit").removeAttr("disabled");
+      $("#conditions").addClass("hidden");
+    } else {  
+      $("#conditions").removeClass("hidden");
+      var elemento = document.querySelector('#submit');
+      elemento.setAttribute("disabled", "");
+    }  
+  });  
+});
+
+</script>
+
+<div class="row">
+  <div class="col-md-8 col-md-offset-2">
+    <div class="well infobox">
+      <h2 style="margin-top: 10px; margin-bottom: 20px;"><%= t (".signup") %></h2>
+
+      <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+      <%= devise_error_messages! %>
+      <% unless devise_error_messages! %>
+      <% if session[:omniauth_errors] %>
+      <p class="alerta"><%= session[:omniauth_errors] %></p>
+      <% end %>
+      <%end%>
+      <div class="row">
+        <div class="col-md-6">
+          <div class="form-group">
+            <%= f.label :firstname, t(".firstname") %><br />
+            <%= f.text_field :firstname, autofocus: true, class: "form-control", value: get_firstname_oauth %>
+          </div>
+
+          <div class="form-group">
+            <%= f.label :lastname, t(".lastname") %><br />
+            <%= f.text_field :lastname, class: "form-control", value: get_lastname_oauth %>
+          </div>
+
+          <div class="form-group">
+            <%= f.label :username, t(".username") %><br />
+            <%= f.text_field :username, class: "form-control", value: get_username_oauth %>
+          </div>
+
+          <div class="form-group">
+            <%= f.label :email, "Email *" %><br>
+            <%= f.email_field :email, class: "form-control", value: get_email_oauth %>
+          </div>
+
+          <div class="form-group">
+            <%= f.label :password, t(".pass") %>
+            <% if @validatable %>
+            <em>(<%= @minimum_password_length %> <%= t (".min") %></em>
+            <% end %><br />
+            <%= f.password_field :password, autocomplete: "off", class: "form-control" %>
+          </div>
+
+          <div class="form-group">
+            <%= f.label :password_confirmation, t(".rep_pass") %><br />
+            <%= f.password_field :password_confirmation, autocomplete: "off", class: "form-control" %>
+          </div>
+        </div>
+        <div class="col-md-6">
+          <div class="form-group">
+            <%= f.label :phone, t(".phone") %><br />
+            <%= f.phone_field :phone, class: "form-control" %>
+          </div>
+
+          <div class="form-group">
+            <%= f.label :address, t(".address") %><br />
+            <%= f.text_field :address, class: "form-control", value: get_city_oauth %>
+          </div>
+
+          <div class="form-group">
+            <%= f.label :zipcode, t(".zipcode") %><br />
+            <%= f.number_field :zipcode, class: "form-control" %>
+          </div>
+
+          <div class="form-group">
+            <%= f.label :country, t(".country") %><br />
+            <%= f.text_field :country, class: "form-control", value: get_country_oauth %>
+          </div>
+
+          <div class="form-group">
+            <%= f.label :birthday, t(".birthday") %><br />
+            <%= f.date_field :birthday, class: "form-control" %>
+          </div>
+
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-6">
+          <span class="text-muted"><%= t(".must_2") %></span>
+          <div class="checkbox checkbox-primary">
+            <label>
+              <input name="checkbox" id="checkbox" type="checkbox" value="1" />
+              <%= t(".accept") %> <a href=""><%= t(".conditions") %></a>
+            </label>
+          </div> 
+        </div>
+      <div class="col-md-6">
+        <div class="form-group" style="margin-bottom: 30px" style="display: inline-block">
+          <%= f.submit t(".signup_create"), onclick: "validateCheckbox();", class: "btn btn-primary pull-right", style: "margin-top: 2px", id: "submit", disabled: "" %>
+          <span class="pull-right text-danger" id="conditions" style="padding: 10px; font-size: 12px"><%= t(".must") %></span>
+        </div>
+      </div>
+      </div>
+      <% end %>
+      <%= render "devise/shared/links" %>
+    </div>
+  </div>
+</div>
